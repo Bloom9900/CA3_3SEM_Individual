@@ -22,6 +22,10 @@ public class HttpUtils {
             con.setRequestProperty("Authorization","Bearer "+ Keys.digitalOceanBearer);
         }
         
+        if (url.toString().contains("https://open.faceit.com/data/v4/")) {
+            con.setRequestProperty("Authorization", "Bearer " + Keys.faceItBearer);
+        }
+        
         Scanner scan = new Scanner(con.getInputStream(), "UTF-8");
         String jsonStr = null;
         if (scan.hasNext()) {

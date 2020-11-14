@@ -3,7 +3,7 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dto.DigitalOceanResponseDTO;
-import facades.FacadeExample;
+import facades.UserFacade;
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -23,7 +23,7 @@ public class DigitalOceanResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
 
-    private static final FacadeExample facade = FacadeExample.getFacadeExample(EMF);
+    private static final UserFacade facade = UserFacade.getUserFacade(EMF);
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final String digitalOceanURL = "https://api.digitalocean.com/v2/";
     private static final ExecutorService es = Executors.newCachedThreadPool();

@@ -7,7 +7,7 @@ import dto.PostnordResponseDTO;
 import dto.ServicepointsResponseDTO;
 import dto.WeatherResponseDTO;
 import utils.EMF_Creator;
-import facades.FacadeExample;
+import facades.UserFacade;
 import java.io.IOException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -16,7 +16,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -33,7 +32,7 @@ public class ServicePointResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
        
-    private static final FacadeExample facade =  FacadeExample.getFacadeExample(EMF);
+    private static final UserFacade facade =  UserFacade.getUserFacade(EMF);
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final String postnordURL = "https://api2.postnord.com/rest/businesslocation/v1/servicepoint/";
     private static final String weatherURL = "https://api.weatherbit.io/v2.0/current";

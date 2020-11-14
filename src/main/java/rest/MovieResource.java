@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import dto.MovieResponseDTO;
 import dto.MovieRequestDTO;
 import utils.EMF_Creator;
-import facades.FacadeExample;
+import facades.UserFacade;
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -27,7 +27,7 @@ public class MovieResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
        
-    private static final FacadeExample facade =  FacadeExample.getFacadeExample(EMF);
+    private static final UserFacade facade =  UserFacade.getUserFacade(EMF);
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final String movieURL = "https://api.nytimes.com/svc/movies/v2/reviews/search.json";
     private static final ExecutorService es = Executors.newCachedThreadPool();
