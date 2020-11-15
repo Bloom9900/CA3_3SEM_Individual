@@ -27,7 +27,6 @@ public class FaceItResource {
     @Path("games")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    @RolesAllowed({"user", "admin"})
     public static String getGames() throws IOException {
         String games = HttpUtils.fetchData(URL+"games?offset=0&limit=20");
         FaceItDTO faceitDTO = gson.fromJson(games, FaceItDTO.class);
@@ -43,6 +42,8 @@ public class FaceItResource {
         return gson.toJson(faceitDTO);
     }
     
+    
+    //Bemærk at der IKKE kan benyttes parrallel metode her da man skal benytte brugerens nickname for at kunne lave nummer 2 api kald!
     @Path("csgo/player")
     @POST
     @Produces({MediaType.APPLICATION_JSON})
