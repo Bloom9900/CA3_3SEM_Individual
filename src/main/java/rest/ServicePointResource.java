@@ -63,6 +63,7 @@ public class ServicePointResource {
         Callable<PostnordResponseDTO> postnordTask = new Callable<PostnordResponseDTO>() {
             @Override
             public PostnordResponseDTO call() throws IOException {
+                Keys.createKeys();
                 String fullURL = (postnordURL + "findNearestByAddress.json?apikey=" + Keys.postNordKey + "&countryCode=DK&agreementCountry=DK&city=" + helper.fixInput(city)
                 + "&postalCode=" + helper.fixInput(postalCode) + "&streetName=" + helper.fixInput(streetName) + "&streetNumber=" + helper.fixInput(streetNumber));
                 String postnord = HttpUtils.fetchData(fullURL);
@@ -73,6 +74,7 @@ public class ServicePointResource {
         Callable<WeatherResponseDTO> weatherTask = new Callable<WeatherResponseDTO>() {
             @Override
             public WeatherResponseDTO call() throws IOException {
+                Keys.createKeys();
                 String weather = HttpUtils.fetchData(weatherURL + "?key=" + Keys.weatherKey + "&lang=da&postal_code=" + postalCode + "&country=DK");
                 WeatherResponseDTO weatherDTO = gson.fromJson(weather, WeatherResponseDTO.class);
                 return weatherDTO;

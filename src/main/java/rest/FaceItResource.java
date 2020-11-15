@@ -15,6 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import utils.EMF_Creator;
 import utils.HttpUtils;
+import utils.Keys;
 
 @Path("faceit")
 public class FaceItResource {
@@ -28,6 +29,7 @@ public class FaceItResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public static String getGames() throws IOException {
+        Keys.createKeys();
         String games = HttpUtils.fetchData(URL+"games?offset=0&limit=20");
         FaceItDTO faceitDTO = gson.fromJson(games, FaceItDTO.class);
         return gson.toJson(faceitDTO);
@@ -37,6 +39,7 @@ public class FaceItResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public static String getCsgo() throws IOException {
+        Keys.createKeys();
         String csgo = HttpUtils.fetchData(URL+"games/csgo");
         FaceItDTO faceitDTO = gson.fromJson(csgo, FaceItDTO.class);
         return gson.toJson(faceitDTO);
@@ -49,6 +52,7 @@ public class FaceItResource {
     @Produces({MediaType.APPLICATION_JSON})
     @RolesAllowed({"user", "admin"})
     public static String getMatches(String nickname) throws IOException {
+        Keys.createKeys();
         FaceItDTO nicknameDTO = gson.fromJson(nickname, FaceItDTO.class);
         String player = HttpUtils.fetchData(URL+"players?nickname="+nicknameDTO.getNickname()+"&game=csgo");
         FaceItDTO faceitDTO = gson.fromJson(player, FaceItDTO.class);

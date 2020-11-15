@@ -45,6 +45,7 @@ public class MovieResource {
     @Consumes({MediaType.APPLICATION_JSON})
     @RolesAllowed({"user"})
     public String getMovieReview(String movieJSON) throws IOException {
+        Keys.createKeys();
         MovieRequestDTO temp = gson.fromJson(movieJSON, MovieRequestDTO.class);
         String movie = HttpUtils.fetchData(movieURL + "?query=" + helper.fixInput(temp.getQuery()) + "&api-key=" + Keys.movieKey);
         MovieResponseDTO movieDTO = gson.fromJson(movie, MovieResponseDTO.class);
