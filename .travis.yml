@@ -1,7 +1,8 @@
 ## SETUP file for Travis
 ## Make sure to rename the database name in the CREATE DATABASE script below to the SAME name as used for your local tests
 ---
-
+ignore:
+    - src/main/java/utils/KeysHidden
 dist: bionic
 
 language: java
