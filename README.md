@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/Bloom9900/CA3_3SEM.svg?branch=master)](https://travis-ci.com/Bloom9900/CA3_3SEM)
+[![Build Status](https://travis-ci.com/Bloom9900/CA3_3SEM_Individual.svg?branch=master)](https://travis-ci.com/Bloom9900/CA3_3SEM_Individual)
 
 # CA3 Backend Project
 
